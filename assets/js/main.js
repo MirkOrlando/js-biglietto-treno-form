@@ -26,21 +26,33 @@ elementBtn.addEventListener('click', function(){
     const passengerAge = document.getElementById('age').value;
     console.log(fullName, tripLengthKm, passengerAge)
 
+    document.getElementById('passenger_name').innerHTML = fullName
+
+
+
     /* calcolare il costo del biglietto */
     const standardPrice = unit_price * tripLengthKm;
     const underPrice = standardPrice - (standardPrice*underage_discount);
     const over65Price = standardPrice - (standardPrice*over65_discount);
     console.log(standardPrice, underPrice, over65Price)
+    const wagonNumber = Math.floor(Math.random()*20+1)
+    const cp = Math.floor(Math.random()*99998+1)
 
     /* visualizzare il risultato */
+    document.getElementById('wagon').innerHTML = wagonNumber;
+    document.getElementById('code_cp').innerHTML = cp;
+
     if (passengerAge === 'under') {
-        console.log(`Sei minorenne, quindi il biglietto costa ${underPrice.toFixed(2)}`)
+        document.getElementById('ticket_type').innerHTML = 'Sconto minorenne';
+        document.getElementById('final_price').innerHTML = `${underPrice.toFixed(2)} €`;
     } else if (passengerAge === 'over65') {
-        console.log(`Sei over 65, quindi il biglietto costa ${over65Price.toFixed(2)}`)
+        document.getElementById('ticket_type').innerHTML = 'Sconto over 65';
+        document.getElementById('final_price').innerHTML = `${over65Price.toFixed(2)} €`;
     } else {
-        console.log(`Sei adulto, quindi il biglietto costa ${standardPrice.toFixed(2)}`)
-    }
-})
+        document.getElementById('ticket_type').innerHTML = 'biglietto standard';
+        document.getElementById('final_price').innerHTML = `${standardPrice.toFixed(2)} €`;
+    };
+});
 
 
 
