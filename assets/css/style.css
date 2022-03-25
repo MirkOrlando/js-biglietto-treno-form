@@ -4,10 +4,28 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: aquamarine;
+:root {
+    --dark: #808080;
+    --primary: #B91450;
+    --light: #CCCCCC;
 }
 
-.container_ticket {
-    transition: visibility 1s linear;
+body {
+    background-color: var(--primary);
+}
+
+.train_border_primary {
+    border: 1px solid var(--primary);
+}
+
+.train_bg_dark {
+    background-color: var(--dark);
+}
+
+.train_bt_light {
+    border-top: 2px solid var(--light);
+}
+
+.train_bb_light {
+    border-bottom: 2px solid var(--light);
 }

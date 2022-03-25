@@ -22,21 +22,21 @@
 
   <div class="container my-4 text-center">
 
-    <h1 class="text-uppercase text-center">Calcola il prezzo del tuo biglietto</h1>
+    <h1 class="text-uppercase text-center text-white">Calcola il prezzo del tuo biglietto</h1>
 
     <form action="" class="p-3 bg-light">
       <div class="row justify-content-evenly">
         <div class="col-2">
           <h5> nome e cognome</h5>
-          <input type="text" id="name" placeholder="nome cognome">
+          <input type="text" id="name" class="train_border_primary" placeholder="nome cognome">
         </div>
         <div class="col-2">
           <h5>Km da percorrere</h5>
-          <input type="number" id="km" placeholder="distanza in chilometri">
+          <input type="number" id="km" class="train_border_primary" placeholder="distanza in chilometri">
         </div>
         <div class="col-2">
           <h5>Fascia di età</h5>
-          <select id="age">
+          <select id="age" class="train_border_primary">
             <option value="">Scegli...</option>
             <option value="under">minorenne</option>
             <option value="adult">adulto</option>
@@ -46,48 +46,47 @@
       </div>
       <div class="container_btns d-flex justify-content-center my-2">
         <a id="submit" class="btn btn-primary m-2">Genera</a>
-        <a href="" id="return" class="btn btn-outline-primary m-2">Annulla</a>
+        <a id="return" class="btn btn-outline-primary m-2">Annulla</a>
       </div>
     </form>
-
 
   </div>
 
   <div class="container container_ticket invisible">
-    <h2 class="text-uppercase text-center">Il tuo biglietto</h2>
+    <h2 class="text-uppercase text-center text-white">Il tuo biglietto</h2>
     <div class="ticket p-3 bg-light">
       <h4 class="text-uppercase">Dettaglio passeggero</h4>
-      <div class="row row-cols-5">
-        <div class="col">
+      <div class="row row-cols-5 ">
+        <div class="col train_bt_light train_bg_dark">
           <h4 class="text-uppercase fw-bold">nome del passeggero</h4>
         </div>
-        <div class="col">
+        <div class="col train_bt_light">
           <h4>offerta</h4>
         </div>
-        <div class="col">
+        <div class="col train_bt_light">
           <h4>carrozza</h4>
         </div>
-        <div class="col">
+        <div class="col train_bt_light">
           <h4>codice CP</h4>
         </div>
-        <div class="col">
+        <div class="col train_bt_light">
           <h4>Costo biglietto</h4>
         </div>
       </div>
       <div class="row row-cols-5">
-        <div class="col">
-          <div id="passenger_name"></div>
+        <div class="col train_bb_light train_bg_dark">
+          <div id="passenger_name" class="h5 fw-bold"></div>
         </div>
-        <div class="col">
+        <div class="col train_bb_light">
           <span id="ticket_type"></span>
         </div>
-        <div class="col">
+        <div class="col train_bb_light">
           <span id="wagon"></span>
         </div>
-        <div class="col">
+        <div class="col train_bb_light">
           <span id="code_cp"></span>
         </div>
-        <div class="col">
+        <div class="col train_bb_light">
           <span id="final_price"></span>
         </div>
       </div>

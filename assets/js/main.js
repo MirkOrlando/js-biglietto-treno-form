@@ -14,8 +14,9 @@ per indicare centesimi sul prezzo). */
 const unit_price = 0.21
 const underage_discount = 0.2
 const over65_discount = 0.4
-const elementBtnSubmit = document.getElementById('submit')
-const elementBtnReturn = document.getElementById('return')
+const elementBtnSubmit = document.getElementById('submit');
+const elementBtnReturn = document.getElementById('return');
+const ticket = document.querySelector('.container_ticket');
 
 
 /* estrarre i dati scritti dall'utente nel form */
@@ -23,15 +24,22 @@ const elementBtnReturn = document.getElementById('return')
 elementBtnSubmit.addEventListener('click', function(){
     const fullName = document.getElementById('name').value;
     if (fullName.length < 1 || fullName.length > 25) {
-        alert('In "nome cognome" puoi inserire da un minimo di 1 carattere fino a un massimo di 25 carattere')
+        alert('In "nome cognome" occorre inserire un valore compreso tra 1 e 25 caratteri')
+        fullName.value=''
     }
     const tripLengthKm = document.getElementById('km').value;
+    if (tripLengthKm.length < 1 || tripLengthKm.length > 2000) {
+        alert('In "km da percorrere" occorre inserire un valore compreso tra 1 e 25 chilometri')
+        tripLengthKm.value=''
+    }
     const passengerAge = document.getElementById('age').value;
+    if (passengerAge === "") {
+        alert('Devi selezionare una fascia d\'età')
+        passengerAge.value=''
+    }
     console.log(fullName, tripLengthKm, passengerAge)
 
     document.getElementById('passenger_name').innerHTML = fullName
-
-
 
     /* calcolare il costo del biglietto */
     const standardPrice = unit_price * tripLengthKm;
@@ -40,7 +48,12 @@ elementBtnSubmit.addEventListener('click', function(){
     console.log(standardPrice, underPrice, over65Price)
     const wagonNumber = Math.floor(Math.random()*20+1)
     const cp = Math.floor(Math.random()*99998+1)
-    const ticket = document.querySelector('.container_ticket').classList.remove('invisible')
+
+    if ((fullName.value='') || (tripLengthKm.value='') || (passengerAge.value='')) {
+        ticket.innerHTML = 'I DATI INSERITI NON SONO CORRETTI'
+    } else {
+        ticket.classList.remove('invisible')
+    }
 
     /* visualizzare il risultato */
     document.getElementById('wagon').innerHTML = wagonNumber;
@@ -59,12 +72,13 @@ elementBtnSubmit.addEventListener('click', function(){
     };    
 });
 
+/* annullare la visualizzazione del ticket */
 elementBtnReturn.addEventListener('click', function(){
     const fullName = document.getElementById('name').value = '';
     const tripLengthKm = document.getElementById('km').value = '';
     const passengerAge = document.getElementById('age').value = '';
 
-    console.log(standardPrice, underPrice, over65Price)
+    console.log(fullName, tripLengthKm, passengerAge)
 
-    const ticket = document.querySelector('.container_ticket').classList.add('invisible');
+    ticket.classList.add('invisible');
 });
