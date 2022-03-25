@@ -11,9 +11,12 @@ Il recap dei dati e l'output del prezzo finale
 va stampato in pagina (formattato con massimo due decimali,
 per indicare centesimi sul prezzo). */
 
-
+const unit_price = 0.21
+const underage_discount = 0.2
+const over65_discount = 0.4
 
 /* estrarre i dati scritti dall'utente nel form */
+
 
 /* calcolare il costo del biglietto */
 
