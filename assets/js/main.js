@@ -10,3 +10,11 @@ va applicato uno sconto del 40% per gli over 65.
 Il recap dei dati e l'output del prezzo finale 
 va stampato in pagina (formattato con massimo due decimali,
 per indicare centesimi sul prezzo). */
+
+
+
+/* estrarre i dati scritti dall'utente nel form */
+
+/* calcolare il costo del biglietto */
+
+/* visualizzare il risultato */
