@@ -7,3 +7,7 @@
 body {
     background-color: aquamarine;
 }
+
+.container_ticket {
+    transition: visibility 1s linear;
+}
