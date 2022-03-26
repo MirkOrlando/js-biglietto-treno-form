@@ -21,64 +21,63 @@ const ticket = document.querySelector('.container_ticket');
 
 /* estrarre i dati scritti dall'utente nel form */
 
-elementBtnSubmit.addEventListener('click', function(){
-    const fullName = document.getElementById('name').value;
-    if (fullName.length < 1 || fullName.length > 25) {
-        alert('In "nome cognome" occorre inserire un valore compreso tra 1 e 25 caratteri')
-        fullName.value=''
-    }
-    const tripLengthKm = document.getElementById('km').value;
-    if (tripLengthKm.length < 1 || tripLengthKm.length > 2000) {
-        alert('In "km da percorrere" occorre inserire un valore compreso tra 1 e 25 chilometri')
-        tripLengthKm.value=''
-    }
-    const passengerAge = document.getElementById('age').value;
-    if (passengerAge === "") {
-        alert('Devi selezionare una fascia d\'età')
-        passengerAge.value=''
-    }
-    console.log(fullName, tripLengthKm, passengerAge)
+elementBtnSubmit.addEventListener('click', function () {
+    const fullName = document.getElementById('name');
+    const tripLengthKm = document.getElementById('km');
+    const passengerAge = document.getElementById('age');
+    console.log(fullName.value, tripLengthKm.value, passengerAge.value)
 
-    document.getElementById('passenger_name').innerHTML = fullName
+    if (fullName.value.length < 1 || fullName.length > 25) {
+        alert('In "nome cognome" occorre inserire un valore compreso tra 1 e 25 caratteri');
+        fullName.value = '';
+    };
+    if (tripLengthKm.value.length < 1 || tripLengthKm.length > 2000) {
+        alert('In "km da percorrere" occorre inserire un valore numerico compreso tra 1 e 2000');
+        tripLengthKm.value = '';
+    };
+    if (passengerAge.value === "") {
+        alert('Devi selezionare una fascia d\'età');
+        passengerAge.value = '';
+    };
 
     /* calcolare il costo del biglietto */
-    const standardPrice = unit_price * tripLengthKm;
-    const underPrice = standardPrice - (standardPrice*underage_discount);
-    const over65Price = standardPrice - (standardPrice*over65_discount);
-    console.log(standardPrice, underPrice, over65Price)
-    const wagonNumber = Math.floor(Math.random()*20+1)
-    const cp = Math.floor(Math.random()*99998+1)
-
-    if ((fullName.value='') || (tripLengthKm.value='') || (passengerAge.value='')) {
-        ticket.innerHTML = 'I DATI INSERITI NON SONO CORRETTI'
-    } else {
-        ticket.classList.remove('invisible')
-    }
+    const standardPrice = unit_price * tripLengthKm.value;
+    const underPrice = standardPrice - (standardPrice * underage_discount);
+    const over65Price = standardPrice - (standardPrice * over65_discount);
+    console.log(standardPrice, underPrice, over65Price);
+    const wagonNumber = Math.floor(Math.random() * 20 + 1);
+    const cp = Math.floor(Math.random() * 99998 + 1);
 
     /* visualizzare il risultato */
+    if ((fullName.value === '') || (tripLengthKm.value === '') || (passengerAge.value === '')) {
+        alert('cortesemente inserire i dati corretti');
+    } else {
+        ticket.classList.remove('invisible');
+    }
+
+    document.getElementById('passenger_name').innerHTML = fullName.value;
     document.getElementById('wagon').innerHTML = wagonNumber;
     document.getElementById('code_cp').innerHTML = cp;
 
-
-    if (passengerAge === 'under') {
+    if (passengerAge.value === 'under') {
         document.getElementById('ticket_type').innerHTML = 'Sconto minorenne';
         document.getElementById('final_price').innerHTML = `${underPrice.toFixed(2)} €`;
-    } else if (passengerAge === 'over65') {
+    } else if (passengerAge.value === 'over65') {
         document.getElementById('ticket_type').innerHTML = 'Sconto over 65';
         document.getElementById('final_price').innerHTML = `${over65Price.toFixed(2)} €`;
     } else {
         document.getElementById('ticket_type').innerHTML = 'biglietto standard';
         document.getElementById('final_price').innerHTML = `${standardPrice.toFixed(2)} €`;
-    };    
+    };
 });
 
 /* annullare la visualizzazione del ticket */
-elementBtnReturn.addEventListener('click', function(){
+elementBtnReturn.addEventListener('click', function () {
     const fullName = document.getElementById('name').value = '';
     const tripLengthKm = document.getElementById('km').value = '';
     const passengerAge = document.getElementById('age').value = '';
 
-    console.log(fullName, tripLengthKm, passengerAge)
+    console.log(fullName, tripLengthKm, passengerAge);
 
     ticket.classList.add('invisible');
 });
