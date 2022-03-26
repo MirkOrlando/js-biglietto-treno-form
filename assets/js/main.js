@@ -30,14 +30,16 @@ elementBtnSubmit.addEventListener('click', function () {
     if (fullName.value.length < 1 || fullName.length > 25) {
         alert('In "nome cognome" occorre inserire un valore compreso tra 1 e 25 caratteri');
         fullName.value = '';
+        ticket.classList.add('invisible');
     };
-    if (tripLengthKm.value.length < 1 || tripLengthKm.length > 2000) {
+    if (tripLengthKm.value < 1 || tripLengthKm.value > 2000) {
         alert('In "km da percorrere" occorre inserire un valore numerico compreso tra 1 e 2000');
         tripLengthKm.value = '';
+        ticket.classList.add('invisible');
     };
     if (passengerAge.value === "") {
         alert('Devi selezionare una fascia d\'età');
-        passengerAge.value = '';
+        ticket.classList.add('invisible');
     };
 
     /* calcolare il costo del biglietto */
